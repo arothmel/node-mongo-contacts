@@ -1,0 +1,5 @@
+# Ignore data(base) files
+data/*
+
+# Ignore node_modules
+node_modules

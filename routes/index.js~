@@ -1,0 +1,9 @@
+
+/*
+ * GET home page.
+ */
+
+exports.index = function(req, res){	
+  sort( 'name' )
+  res.render('index', { title: 'Express' });
+};

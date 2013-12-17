@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	h1= title
+	#contacts
+		- each contact in contacts
+			div.contact
+				div.created_at= contact.created_at
+				div.title= contact.name 
+				div.name= contact.email
+				div.name= contact.address
+				div.name= contact.city
+				div.name= contact.province		
+					form( method="post", action="/contact/:id/delete") 
+						input(name="_id", type="hidden", value=contact._id.toHexString()) 
+						input(id="delete", value="Remove", type="submit")  
+					form( method="get", action="/contact/:id/edit") 
+						input(name="_id", type="hidden", value=contact._id.toHexString()) 
+						input(id="edit", value="Edit", type="submit")
+	div.new		
+	a(href="/contact/new")!= "Add New Contact"
