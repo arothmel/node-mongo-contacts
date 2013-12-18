@@ -1,10 +1,9 @@
 
-
 1. --> 1st terminal Start database
-[EmployeeDB]$ sudo mongod --dbpath /home/allison/public_html/mean/EmployeeDB/data
+[ContactDB]$ sudo mongod --dbpath /home/allison/public_html/mean/ContactDB/data
 
 2. --> 2nd terminal Start application server
-[EmployeeDB]$ node app.js
+[ContactDB]$ node app.js
 
 3. --> Web browser
 http://localhost:3000/
@@ -23,7 +22,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , EmployeeProvider = require('./employeeprovider').EmployeeProvider;
+  , EmployeeProvider = require('./contactprovider').ContactProvider;
 
 var Db = require('mongodb').Db;
 var Connection = require('mongodb').Connection;
@@ -33,20 +32,17 @@ var ObjectID = require('mongodb').ObjectID;
 
 Command-line Database
 ----------------------
-[EmployeeDB]$ mongo
+[ContactDB]$ mongo
 MongoDB shell version: 2.4.6
 connecting to: test
 > use node-mongo-employee
-switched to db node-mongo-employee
+switched to db node-mongo-contact
 > 
 
-db.node-mongo-employee.find()
+db.node-mongo-contact.find()
 
 TOOLS:
 
 browse database (GUI)
 /home/allison/Downloads/umongo-linux-all_1-6-1
 [allison@gandalf umongo-linux-all_1-6-1]$ sh launch-umongo.sh 
-
-
-
