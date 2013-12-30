@@ -33,16 +33,12 @@ var ObjectID = require('mongodb').ObjectID;
 Command-line Database
 ----------------------
 [ContactDB]$ mongo  
-
 MongoDB shell version: 2.4.6  
-
 connecting to: test  
 
 > use node-mongo-employee  
-
 switched to db node-mongo-contact  
 
 >  
-
 db.node-mongo-contact.find()  
 
