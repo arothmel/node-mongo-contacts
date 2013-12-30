@@ -1,4 +1,3 @@
-
                  
 1. --> 1st terminal Start database
 [ContactDB]$ sudo mongod --dbpath /pathto/public_html/ContactDB/data
@@ -37,7 +36,9 @@ Command-line Database
 MongoDB shell version: 2.4.6
 connecting to: test
 > use node-mongo-employee
+
 switched to db node-mongo-contact
+
 >
 
 db.node-mongo-contact.find()
