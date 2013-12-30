@@ -1,4 +1,6 @@
                  
+Startup
+--------
 1. --> 1st terminal Start database  
 [ContactDB]$ sudo mongod --dbpath /pathto/public_html/ContactDB/data  
 
