@@ -37,7 +37,13 @@ ContactProvider.prototype.save = function(contacts, callback) {
     this.getCollection(function(error, contact_collection) {
       if( error ) callback(error);
       else {
- 
+        if( typeof(contacts.length)=="undefined")
+          contacts = [contacts];
+
+        for( var i =0;i< contacts.length;i++ ) {
+          contacts = contacts[i];
+          contacts.created_at = new Date();
+        }
 
         contact_collection.insert(contacts, function() {
           callback(null, contacts);
