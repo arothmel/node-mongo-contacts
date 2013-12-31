@@ -4,6 +4,8 @@ var Server = require('mongodb').Server;
 var BSON = require('mongodb').BSON;
 var ObjectID = require('mongodb').ObjectID;
 
+// var ContactProvider = require('./contactprovider').ContactProvider;  // fix error on cloud9
+
 ContactProvider = function(host, port) {
   this.db= new Db('node-mongo-contact', new Server(host, port, {safe: false}, {auto_reconnect: true}, {}));
   this.db.open(function(){});
@@ -33,15 +35,9 @@ ContactProvider.prototype.findAll = function(callback) {
 //save new contact
 ContactProvider.prototype.save = function(contacts, callback) {
     this.getCollection(function(error, contact_collection) {
-      if( error ) callback(error)
+      if( error ) callback(error);
       else {
-        if( typeof(contacts.length)=="undefined")
-          contacts = [contacts];
-
-        for( var i =0;i< contacts.length;i++ ) {
-          contact = contacts[i];
-          contact.created_at = new Date();
-        }
+ 
 
         contact_collection.insert(contacts, function() {
           callback(null, contacts);
@@ -49,7 +45,7 @@ ContactProvider.prototype.save = function(contacts, callback) {
       }
     });
 };
-//find an contact by ID
+//find a contact by ID
 ContactProvider.prototype.findById = function(contactId, callback) {
     this.getCollection(function(error, contact_collection) {
       if( error ) callback(error)
