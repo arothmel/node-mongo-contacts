@@ -17,7 +17,5 @@ Startup
 3. --> Web browser  
 http://localhost:3000/  
 
-See WIKI Notes for Set-up and Notes:   
+### See WIKI Notes for Set-up and Notes:   
 https://github.com/arothmel/node-mongo-contacts/wiki
-
-
