@@ -1,4 +1,11 @@
                  
+Modules
+----------
+ express --> (MVC Web Application Framework)   
+ jade --> (Node Template Engine: in lieu of HTML)   
+ mongodb --> (NoSQL database)   
+ stylus --> ( Expressive, dynamic, robust CSS styles for Node.js)   
+
 Startup
 --------
 1. --> 1st terminal Start database  
@@ -10,7 +17,7 @@ Startup
 3. --> Web browser  
 http://localhost:3000/  
 
-See also WIKI Notes:  
+See WIKI Notes for Set-up and Notes:   
 https://github.com/arothmel/node-mongo-contacts/wiki
 
 
