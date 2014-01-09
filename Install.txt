@@ -1,19 +1,23 @@
 
-Start database
-1. --> 1st terminal Start database
-[EmployeeDB]$ sudo mongod --dbpath /home/allison/public_html/mean/EmployeeDB/data
+Express (MVC) / Mongo (DB) / Jade (in lieu of HTML) / Stylus (in lieu of css)
+
+Environment Setup  for Project
+------------------------------
 
 npm install express
 
-To automatically build out an application template for your application, navigate to the directory where you wish to create your application and run the following code:
+To automatically build out an application template for your application, navigate to the directory 
+where you wish to create your application and run the following code:
 
 mkdir ContactDB
 cd ContactDB
 express -c stylus
 npm install -d
 
+Scaffolding
+------------
 
-[allison@gandalf ContactDB]$ express -c stylus
+[ContactDB]$ express -c stylus
 
    create : .
    create : ./package.json
@@ -35,14 +39,12 @@ npm install -d
 
    run the app:
      $ node app
+     
+Add dependencies to package.json
+--------------------------------
 
-[allison@gandalf ContactDB]$ ls -l
-total 20
--rw-r--r-- 1 allison athlone  952 Dec 16 22:09 app.js
--rw-r--r-- 1 allison athlone  204 Dec 16 22:09 package.json
-drwxr-xr-x 5 allison athlone 4096 Dec 16 22:09 public
-drwxr-xr-x 2 allison athlone 4096 Dec 16 22:09 routes
-drwxr-xr-x 2 allison athlone 4096 Dec 16 22:09 views
+[ContactDB]$ vi package.json
+
 
 Edit  package.json
 add
@@ -52,3 +54,26 @@ Once you have saved the file run the following code to download and install the 
 
 npm install -d
 
+To Run on Cloud9
+------------------
+This caused me grief but I think it's better now: Binary JSON, 
+BSON is your friend! :)
+
+    contact_collection.findOne
+        ({_id: contact_collection.db.bson_serializer.ObjectID.createFromHexString(contactId)}, 
+         function(error, result) {} 
+        )
+
+Note to self: I don't think 'monk' words on Cloud9 
+/* --------------------------------------------------------------------
+MongoDB is preinstalled in your workspace. To configure MongoDB for first run, run the 
+following below (passing the correct parameters to it). Mongodb data will be stored in the folder data.
+
+$ mkdir data
+$ echo 'mongod --bind_ip=$IP --dbpath=data --nojournal --rest "$@"' > mongod
+$ chmod a+x mongod
+
+---------------------------------------------------------------------*/
+
+1. Start database
+$ ./mongod

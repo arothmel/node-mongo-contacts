@@ -1,15 +1,22 @@
-
 /**
  * Module dependencies.
  */
+ // Express.js is the most popular node.js Framework
+ // 1. First we import dependencies with Node.js global require() function.
+ // 2. Then get access to our own modules which are app's routes 
+ // 3. We also require core http and path modules
 
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path')
-  , ContactProvider = require('./contactprovider').ContactProvider;
+  , path = require('path');
+  
+// See contactprovider.js for db connection information
 
+var ContactProvider = require('./contactprovider').ContactProvider;
+
+// Instantiate express and assign our app variable
 var app = express();
 
 // all environments
@@ -27,7 +34,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var contactProvider= new ContactProvider('localhost', 27017);
 
-//Routes
+/* Routes -- handle routing the URI
+--
+-- ToDo: Move to routes directory
+ */
+
+// GET home page
+// see also index.jade
 
 app.get('/', function(req, res){
   contactProvider.findAll(function(error, cntcts){
@@ -37,6 +50,9 @@ app.get('/', function(req, res){
         });
   });
 });
+
+// GET New Contacts page
+// see also contact_new.jade
 
 app.get('/contact/new', function(req, res) {
     res.render('contact_new', {
