@@ -3,3 +3,9 @@ data/*
 
 # Ignore node_modules
 node_modules
+
+# Ignore local notes
+ReadMe.txt
+
+# Ignore temporary files
+*.*~
