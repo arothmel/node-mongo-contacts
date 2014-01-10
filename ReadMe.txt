@@ -13,6 +13,7 @@ Start database  (if local or VM))
 1. --> 1st terminal Start database
 [ContactDB]$ sudo mongod --dbpath /home/allison/public_html/mean/ContactDB/data
 
+mongod --dbpath /home/allison/public_html/mean/nodetest1/data
 
 --  or --- 
 
@@ -43,12 +44,24 @@ Command-line Database
 ----------------------
 Local:
 4. Connect to database via terminal (optional)
-[ContactDB]$ mongo
+
+** MONGO uses JSON!!! **
+
+[allison@gandalf ContactDB]$ mongo
 MongoDB shell version: 2.4.6
 connecting to: test
 > use node-mongo-contact
 switched to db node-mongo-contact
-> 
+> show dbs
+local	0.078125GB
+node-mongo-contact	0.203125GB
+> show collections
+contacts
+system.indexes
+usercollection
+> db.contacts.insert({ "name" : "Dr. Who", "email" : "dr@tartus.com" , "address" : "everywhere"})
+
+
 
 Cloud9:
 4. Connect to database via terminal (optional)
