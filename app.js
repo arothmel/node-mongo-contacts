@@ -34,68 +34,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var contactProvider= new ContactProvider('localhost', 27017);
 
-/* Routes -- handle routing the URI
---
--- ToDo: Move to routes directory
- */
+// Routes -- handle routing the URI
 
-// GET home page
-// see also index.jade
+app.get('/', routes.index);
+app.get('/helloworld', routes.helloworld);
+app.get('/contact/new', routes.contactNew);
+app.get('/contact/:id/edit', routes.contactEdit);
 
-app.get('/', function(req, res){
-  contactProvider.findAll(function(error, cntcts){
-      res.render('index', {
-            title: 'Contacts',
-            contacts:cntcts
-        });
-  });
-});
+//save - post
+app.post('/contact/new', routes.contactSave);
+app.post('/contact/:id/edit', routes.contactUpdate);
 
-// GET New Contacts page
-// see also contact_new.jade
-
-app.get('/contact/new', function(req, res) {
-    res.render('contact_new', {
-        title: 'New Contacts'
-    });
-});
-
-//save new contact
-app.post('/contact/new', function(req, res){
-    contactProvider.save({
-        name: req.param('name'),
-        email: req.param('email'),
-        address: req.param('address'),        
-        city: req.param('city'),
-        province: req.param('province')                
-    }, function( error, docs) {
-        res.redirect('/')
-    });
-});
-
-//update a contact
-app.get('/contact/:id/edit', function(req, res) {
-        contactProvider.findById(req.param('_id'), function(error, contact) {
-                res.render('contact_edit',
-                { 
-                        contact: contact
-                });
-        });
-});
-
-//save updated contact
-app.post('/contact/:id/edit', function(req, res) {
-        contactProvider.update(req.param('_id'),{
-                name: req.param('name'),
-                email: req.param('email'),
-                address: req.param('address'),
-                city: req.param('city'),
-                province: req.param('province')                                              
-        }, function(error, docs) {
-                res.redirect('/')
-        });
-});
-
+// No roots :p
 //delete a contact
 app.post('/contact/:id/delete', function(req, res) {
         contactProvider.delete(req.param('_id'), function(error, docs) {
